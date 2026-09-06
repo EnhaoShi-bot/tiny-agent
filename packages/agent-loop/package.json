@@ -1,8 +1,10 @@
 {
-  "name": "@tinyagent/agent",
+  "name": "@tinyagent/agent-loop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
   "types": "dist/index.t.mjs",
   "module": "dist/index.mjs",
   "scripts": {
