@@ -1,6 +1,6 @@
 import "dotenv/config"
-import { runAgent, createModel } from "@tinyagent/agent-loop"
-import { tools } from "./tools"
+import {runAgent, createModel} from "@tinyagent/agent-loop"
+import {tools} from "./tools"
 
 const systemPrompt = `你是 TinyAgent，一个运行在用户本地电脑上的助手，可以读写文件、执行命令。
 规则：
@@ -17,8 +17,19 @@ const model = createModel({
 
 const main = async () => {
     const result = await runAgent(
-        "帮我在 tmp-test 目录下创建 notes.md，写三条合理的待办事项，然后读回文件确认写入成功。",
-        { model, tools, systemPrompt, maxTurns: 10 },
+        [{role: "user", content: "帮我在 tmp-test 目录下创建 notes.md，写三条合理的待办事项，然后读回文件确认写入成功。"}], // 这里必须要接受的是message列表的输入才行
+        {
+            model,
+            tools,
+            systemPrompt,
+            maxTurns: 10,
+            onEvent: (e) => {
+                if (e.type === "messageStart") console.log(`>> 第 ${e.turn} 轮，模型思考中`)
+                if (e.type === "toolStart") console.log(`>> 调用工具 ${e.toolName}`, JSON.stringify(e.args))
+                if (e.type === "toolEnd") console.log(`>> 工具返回${e.isError ? "(失败)" : ""}:`, e.content.slice(0, 50))
+                if (e.type === "agentEnd") console.log(`>> 结束，共 ${e.turns} 轮`)
+            },
+        },
     )
 
     // 打印循环轨迹，看模型每一轮在干什么

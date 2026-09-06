@@ -1,4 +1,4 @@
-import type { AssistantMessage, Message, Tool as ToolDefinition } from "@tinyagent/llm"
+import type {AssistantMessage, Message, ToolResultMessage, Tool as ToolDefinition} from "@tinyagent/llm"
 
 // 工具 = 定义（发给模型看的：名字/描述/参数表）+ 执行（只有 agent 知道）
 export interface Tool extends ToolDefinition {
@@ -25,4 +25,16 @@ export interface RunAgentOptions {
     tools: Tool[]
     systemPrompt?: string
     maxTurns?: number
+    onEvent?: (event: AgentEvent) => void
 }
+
+
+export type AgentEvent =
+    | { type: "agentStart" }
+    | { type: "agentEnd"; output: string; turns: number }
+    | { type: "turnStart"; turn: number }
+    | { type: "turnEnd"; turn: number; message: AssistantMessage; toolResults: ToolResultMessage[] }
+    | { type: "messageStart"; turn: number }
+    | { type: "messageEnd"; turn: number; message: AssistantMessage }
+    | { type: "toolStart"; turn: number; toolCallId: string; toolName: string; args: Record<string, unknown> }
+    | { type: "toolEnd"; turn: number; toolCallId: string; toolName: string; isError: boolean; content: string }
