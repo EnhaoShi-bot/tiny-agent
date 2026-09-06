@@ -1,0 +1,18 @@
+{
+  "name": "@tinyagent/agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "types": "dist/index.t.mjs",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tinyagent/llm": "workspace:*"
+  }
+}
+

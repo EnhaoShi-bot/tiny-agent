@@ -1,0 +1,16 @@
+{
+  "name": "@tinyagent/llm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    ".": "./dist/index.mjs"
+  }
+}
+
