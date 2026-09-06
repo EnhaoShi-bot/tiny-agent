@@ -33,6 +33,18 @@ importers:
         specifier: workspace:*
         version: link:../agent-loop
 
+  packages/cli:
+    dependencies:
+      '@tinyagent/agent-loop':
+        specifier: workspace:*
+        version: link:../agent-loop
+      '@tinyagent/assistant':
+        specifier: workspace:*
+        version: link:../assistant
+      '@tinyagent/llm':
+        specifier: workspace:*
+        version: link:../llm
+
   packages/llm: {}
 
 packages:

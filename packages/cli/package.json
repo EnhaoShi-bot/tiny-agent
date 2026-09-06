@@ -1,0 +1,14 @@
+{
+  "name": "@tinyagent/cli",
+  "version": "1.0.0",
+  "exports": { ".": "./dist/cli.mjs" },
+  "types": "dist/cli.t.mjs",
+  "module": "dist/cli.mjs",
+  "scripts": { "build": "tsdown" },
+  "license": "ISC",
+  "dependencies": {
+    "@tinyagent/assistant": "workspace:*",
+    "@tinyagent/agent-loop": "workspace:*",
+    "@tinyagent/llm": "workspace:*"
+  }
+}
