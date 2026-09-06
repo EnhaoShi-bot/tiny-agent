@@ -1,20 +1,22 @@
 {
   "name": "@tinyagent/assistant",
   "version": "1.0.0",
-  "description": "",
+  "description": "TinyAgent tools and system prompt",
   "exports": {
     ".": "./dist/index.mjs"
   },
-  "types": "dist/index.t.mjs",
+  "types": "dist/index.d.mts",
   "module": "dist/index.mjs",
+  "files": [
+    "dist",
+    "!dist/test.mjs", "!dist/test.mjs.map", "!dist/test.d.mts",
+    "!dist/main.mjs", "!dist/main.mjs.map", "!dist/main.d.mts"
+  ],
   "scripts": {
     "build": "tsdown"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "@tinyagent/agent-loop": "workspace:*"
   }
 }
-

@@ -1,22 +1,29 @@
-import { createInterface } from "node:readline"
-import { runAgent, createModel } from "@tinyagent/agent-loop"
-import type { Message } from "@tinyagent/llm"
-import { tools, systemPrompt } from "@tinyagent/assistant"
-import { loadConfig } from "./config"
+#!/usr/bin/env node
+import {createInterface} from "node:readline"
+import {runAgent, createModel} from "@tinyagent/agent-loop"
+import type {Message} from "@tinyagent/llm"
+import {tools, systemPrompt} from "@tinyagent/assistant"
+import {loadConfig} from "./config"
 
 const main = async () => {
     const config = await loadConfig()
     const model = createModel(config)
 
-    const rl = createInterface({ input: process.stdin, output: process.stdout })
+    const rl = createInterface({input: process.stdin, output: process.stdout})
     let history: Message[] = []
 
     const ask = () => {
         rl.question("你> ", async (input) => {
             const text = input.trim()
-            if (text === "") { ask(); return }
-            if (text === "exit" || text === "quit") { rl.close(); return }
-            history.push({ role: "user", content: text })
+            if (text === "") {
+                ask();
+                return
+            }
+            if (text === "exit" || text === "quit") {
+                rl.close();
+                return
+            }
+            history.push({role: "user", content: text})
             const result = await runAgent(history, {
                 model, tools, systemPrompt, maxTurns: 10,
                 onEvent: (e) => {
@@ -31,7 +38,10 @@ const main = async () => {
         })
     }
     ask()
-    rl.on("close", () => { console.log("\n再见"); process.exit(0) })
+    rl.on("close", () => {
+        console.log("\n再见");
+        process.exit(0)
+    })
 }
 
 main()

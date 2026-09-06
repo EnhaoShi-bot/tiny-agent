@@ -1,14 +1,24 @@
 {
   "name": "@tinyagent/cli",
   "version": "1.0.0",
-  "exports": { ".": "./dist/cli.mjs" },
-  "types": "dist/cli.t.mjs",
+  "description": "TinyAgent interactive CLI",
+  "exports": {
+    ".": "./dist/cli.mjs"
+  },
+  "types": "dist/cli.d.mts",
   "module": "dist/cli.mjs",
-  "scripts": { "build": "tsdown" },
+  "bin": {
+    "tinyagent": "dist/cli.mjs"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsdown"
+  },
   "license": "ISC",
   "dependencies": {
     "@tinyagent/assistant": "workspace:*",
     "@tinyagent/agent-loop": "workspace:*",
-    "@tinyagent/llm": "workspace:*"
+    "@tinyagent/llm": "workspace:*",
+    "dotenv": "17.4.2"
   }
 }

@@ -44,6 +44,9 @@ importers:
       '@tinyagent/llm':
         specifier: workspace:*
         version: link:../llm
+      dotenv:
+        specifier: 17.4.2
+        version: 17.4.2
 
   packages/llm: {}
 
