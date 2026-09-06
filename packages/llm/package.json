@@ -1,16 +1,15 @@
 {
   "name": "@tinyagent/llm",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimal OpenAI-compatible chat completions client for TinyAgent",
   "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "files": ["dist", "!dist/test.mjs", "!dist/test.mjs.map", "!dist/test.d.mts"],
   "scripts": {
     "build": "tsdown"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "exports": {
-    ".": "./dist/index.mjs"
-  }
+  "license": "ISC"
 }
-

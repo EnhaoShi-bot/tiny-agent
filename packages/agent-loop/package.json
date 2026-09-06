@@ -1,20 +1,18 @@
 {
   "name": "@tinyagent/agent-loop",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimal agent loop: model, tools, progress events",
+  "types": "dist/index.d.mts",
   "exports": {
     ".": "./dist/index.mjs"
   },
-  "types": "dist/index.t.mjs",
   "module": "dist/index.mjs",
+  "files": ["dist", "!dist/test.mjs", "!dist/test.mjs.map", "!dist/test.d.mts"],
   "scripts": {
     "build": "tsdown"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "@tinyagent/llm": "workspace:*"
   }
 }
-
