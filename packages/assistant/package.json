@@ -1,0 +1,20 @@
+{
+  "name": "@tinyagent/assistant",
+  "version": "1.0.0",
+  "description": "",
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "types": "dist/index.t.mjs",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tinyagent/agent-loop": "workspace:*"
+  }
+}
+

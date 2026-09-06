@@ -22,7 +22,7 @@ const model = createModel({
 
 const main = async () => {
     const result = await runAgent(
-        "北京和上海今天天气怎么样？分别查询后对比总结。我希望你帮我测试一下这个工具的情况，比如你发起错误的工具名称，或者给错误的参数，看我定义的这个demo工具有没有错误响应机制",
+        "北京和上海今天天气怎么样？分别查询后对比总结。",
         { model, tools: [getWeather], maxTurns: 10 },
     )
     console.log("—— 最终回答 ——")
